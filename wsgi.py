@@ -15,7 +15,8 @@ import math
 from cherrypy.lib.static import serve_file
 # 導入 gear 模組
 #import gear
-
+import man
+import man2
 ################# (2) 廣域變數設定區
 # 確定程式檔案所在目錄, 在 Windows 下有最後的反斜線
 _curdir = os.path.join(os.getcwd(), os.path.dirname(__file__))
@@ -115,28 +116,6 @@ class Midterm(object):
     <h1>cda_g2 課程練習</h1>
     <h2>組員名單</h2>
 
-    <table style="border:7px #008F00 double;" rules="all" cellpadding='7';>
-    <!-- "border:7px" 表示表格邊框粗細 -->
-    <!-- "#008F00"  表示表格邊框顏色  -->
-    <!--  色碼表 http://www.wibibi.com/info.php?tid=372 -->
-
-    <tr>
-    <td style='' align='center' valign="middle">組長</td>
-    <td style='' align='center' valign="middle">學號</td>
-    </tr>
-    <tr><td>陳柏安</td><td>40223131</td></tr>
-    <tr>
-    <td style='' align='center' valign="middle">組員</td>
-    <td style='' align='center' valign="middle">學號</td>
-    </tr>
-    <tr><td>吳佳容</td><td>40223102</td></tr>
-    <tr><td>林瑩禎</td><td>40223104</td></tr>
-    <tr><td>侯云婷</td><td>40223105</td></tr>
-    <tr><td>許芸瑄</td><td>40223106</td></tr>
-    <tr><td>黃雯琦</td><td>40223107</td></tr>
-    <tr><td>陳儀芳</td><td>40023107</td></tr>
-    </table>
-    <!--  align='center' 為水平置中 ，valign="middle" 為垂直置中 -->
 
 
     <h1>cda_g2_w11 練習</h1>
@@ -168,16 +147,16 @@ class Midterm(object):
     <form method=POST action=spuraction>
     齒數:<select name"select_one>
     <option value="1">20</option>
-    <option value="2">25</option>
-    <option value="3">30</option>
+    <option value="2">26</option>
+    <option value="3">32</option>
     <option value="4">35</option>
-    <option value="5">40</option>
-    <option value="6">35</option>
+    <option value="5">42</option>
+    <option value="6">36</option>
     </select><br />
     模數:<select name"select_two>
     <option value="1">5</option>
     <option value="2">10</option>
-    <option value="3">15</option>
+    <option value="3">12</option>
     </select><br />
     壓力角:<select name"select_three>
     <option value="1">15</option>
@@ -753,7 +732,8 @@ application_conf = {'/static':{
 root = Midterm()
 root.download = Download()
 #root.gear = gear.Gear()
-
+root.man = man.MAN()
+root.man2 = man2.MAN()
 if 'OPENSHIFT_REPO_DIR' in os.environ.keys():
     # 表示在 OpenSfhit 執行
     application = cherrypy.Application(root, config=application_conf)

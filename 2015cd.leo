@@ -48,6 +48,8 @@
 <v t="office.20150504190303.2"><vh>index</vh></v>
 </v>
 </v>
+<v t="2015.20150525221417.1"><vh>@edit man.py</vh></v>
+<v t="2015.20150525221602.1"><vh>@edit man2.py</vh></v>
 <v t="office.20150504100507.1" a="E"><vh>@path static</vh>
 <v t="office.20150504184156.1"><vh>@edit axuploader.js</vh></v>
 <v t="office.20150504100857.1" a="E"><vh>@path weblink</vh>
@@ -145,7 +147,8 @@ application_conf = {'/static':{
 root = Midterm()
 root.download = Download()
 #root.gear = gear.Gear()
-
+root.man = man.MAN()
+root.man2 = man2.MAN()
 if 'OPENSHIFT_REPO_DIR' in os.environ.keys():
     # 表示在 OpenSfhit 執行
     application = cherrypy.Application(root, config=application_conf)
@@ -162,7 +165,8 @@ import math
 from cherrypy.lib.static import serve_file
 # 導入 gear 模組
 #import gear
-
+import man
+import man2
 ################# (2) 廣域變數設定區
 # 確定程式檔案所在目錄, 在 Windows 下有最後的反斜線
 _curdir = os.path.join(os.getcwd(), os.path.dirname(__file__))
@@ -1778,28 +1782,6 @@ def index(self, N=20 ,N1=20 , M=4, P=20,midx=400):
 &lt;h1&gt;cda_g2 課程練習&lt;/h1&gt;
 &lt;h2&gt;組員名單&lt;/h2&gt;
 
-&lt;table style="border:7px #008F00 double;" rules="all" cellpadding='7';&gt;
-&lt;!-- "border:7px" 表示表格邊框粗細 --&gt;
-&lt;!-- "#008F00"  表示表格邊框顏色  --&gt;
-&lt;!--  色碼表 http://www.wibibi.com/info.php?tid=372 --&gt;
-
-&lt;tr&gt;
-&lt;td style='' align='center' valign="middle"&gt;組長&lt;/td&gt;
-&lt;td style='' align='center' valign="middle"&gt;學號&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;陳柏安&lt;/td&gt;&lt;td&gt;40223131&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style='' align='center' valign="middle"&gt;組員&lt;/td&gt;
-&lt;td style='' align='center' valign="middle"&gt;學號&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;吳佳容&lt;/td&gt;&lt;td&gt;40223102&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;林瑩禎&lt;/td&gt;&lt;td&gt;40223104&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;侯云婷&lt;/td&gt;&lt;td&gt;40223105&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;許芸瑄&lt;/td&gt;&lt;td&gt;40223106&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;黃雯琦&lt;/td&gt;&lt;td&gt;40223107&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;陳儀芳&lt;/td&gt;&lt;td&gt;40023107&lt;/td&gt;&lt;/tr&gt;
-&lt;/table&gt;
-&lt;!--  align='center' 為水平置中 ，valign="middle" 為垂直置中 --&gt;
 
 
 &lt;h1&gt;cda_g2_w11 練習&lt;/h1&gt;
@@ -1870,16 +1852,16 @@ def spur(self, N=20 , M=5, P=15):
 &lt;form method=POST action=spuraction&gt;
 齒數:&lt;select name"select_one&gt;
 &lt;option value="1"&gt;20&lt;/option&gt;
-&lt;option value="2"&gt;25&lt;/option&gt;
-&lt;option value="3"&gt;30&lt;/option&gt;
+&lt;option value="2"&gt;26&lt;/option&gt;
+&lt;option value="3"&gt;32&lt;/option&gt;
 &lt;option value="4"&gt;35&lt;/option&gt;
-&lt;option value="5"&gt;40&lt;/option&gt;
-&lt;option value="6"&gt;35&lt;/option&gt;
+&lt;option value="5"&gt;42&lt;/option&gt;
+&lt;option value="6"&gt;36&lt;/option&gt;
 &lt;/select&gt;&lt;br /&gt;
 模數:&lt;select name"select_two&gt;
 &lt;option value="1"&gt;5&lt;/option&gt;
 &lt;option value="2"&gt;10&lt;/option&gt;
-&lt;option value="3"&gt;15&lt;/option&gt;
+&lt;option value="3"&gt;12&lt;/option&gt;
 &lt;/select&gt;&lt;br /&gt;
 壓力角:&lt;select name"select_three&gt;
 &lt;option value="1"&gt;15&lt;/option&gt;
